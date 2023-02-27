@@ -6,7 +6,7 @@
 #    By: chillion <chillion@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/01 12:07:22 by chillion          #+#    #+#              #
-#    Updated: 2023/02/13 12:59:31 by chillion         ###   ########.fr        #
+#    Updated: 2023/02/14 14:43:59 by chillion         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@
 CC := c++
 FLAGS := -std=c++98 -Wall -Wextra -Werror -MMD -MP -Isources/
 #FLAGS += -fsanitize=address
+FLAGS += -g3
 SRC_DIR := sources/
 OBJ_DIR := objects/
 RM := rm
@@ -30,11 +31,10 @@ MAGENTA = \033[0;35m
 CYAN = \033[0;36m
 NC = \033[0m
 
-SRCS =	Zombie.cpp	\
-		zombieHorde.cpp	\
+SRCS =	Fixed.cpp	\
 		main.cpp	\
 
-SOFT_NAME := zombieHorde
+SOFT_NAME := Fixed
 OBJS = $(SRCS:%.cpp=%.o)
 SRC = $(addprefix $(SRC_DIR),$(SRCS))
 OBJ = $(addprefix $(OBJ_DIR),$(OBJS))

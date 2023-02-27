@@ -6,7 +6,7 @@
 #    By: chillion <chillion@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/01 12:07:22 by chillion          #+#    #+#              #
-#    Updated: 2023/02/13 18:47:48 by chillion         ###   ########.fr        #
+#    Updated: 2023/02/20 13:19:10 by chillion         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,8 +45,19 @@ SRC7 = cpp01/ex04
 SRC8 = cpp01/ex05
 SRC9 = cpp01/ex06
 SRC10 = cpp02/ex00
+SRC11 = cpp02/ex01
+SRC12 = cpp02/ex02
+SRC13 = cpp03/ex00
+SRC14 = cpp03/ex01
+SRC15 = cpp03/ex02
+SRC16 = cpp03/ex03
+SRC17 = cpp04/ex00
+SRC18 = cpp04/ex01
+SRC19 = cpp04/ex02
 
-SRCS =	$(SRC0) $(SRC1) $(SRC2) $(SRC3) $(SRC4) $(SRC5) $(SRC6) $(SRC7) $(SRC8) $(SRC9) $(SRC10)
+SRCS =	$(SRC0) $(SRC1) $(SRC2) $(SRC3) $(SRC4) $(SRC5) $(SRC6) $(SRC7) $(SRC8) $(SRC9) $(SRC10) \
+		$(SRC11) $(SRC12) $(SRC13) $(SRC14) $(SRC15) $(SRC16) $(SRC17) $(SRC18) $(SRC19)
+# $(SRC13) $(SRC14) $(SRC15) $(SRC16) $(SRC17) $(SRC18)
 
 SOFT_NAME := MakeAll
 OBJS = $(SRCS=%.tmp)
