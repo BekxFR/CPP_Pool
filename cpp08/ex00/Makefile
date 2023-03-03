@@ -6,20 +6,20 @@
 #    By: chillion <chillion@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/01 12:07:22 by chillion          #+#    #+#              #
-#    Updated: 2023/02/14 14:43:59 by chillion         ###   ########.fr        #
+#    Updated: 2023/03/03 11:47:31 by chillion         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 .PHONY : all clean fclean re test
 
-CC := c++
-FLAGS := -std=c++98 -Wall -Wextra -Werror -MMD -MP -Isources/
-#FLAGS += -fsanitize=address
-FLAGS += -g3
+CXX := c++
+CXXFLAGS := -std=c++98 -Wall -Wextra -Werror -MMD -MP -Isources/
+# CXXFLAGS += -fsanitize=address
+CXXFLAGS += -g3
 SRC_DIR := sources/
 OBJ_DIR := objects/
 RM := rm
-VAL := valgrind --leak-check=full --track-origins=yes
+VAL := valgrind --leak-check=full --track-origins=yes --track-fds=yes 
 
 BLACK = \033[1;30m
 REDBG = \033[30;41m
@@ -31,10 +31,9 @@ MAGENTA = \033[0;35m
 CYAN = \033[0;36m
 NC = \033[0m
 
-SRCS =	Fixed.cpp	\
-		main.cpp	\
+SRCS =	main.cpp	\
 
-SOFT_NAME := Fixed
+SOFT_NAME := easyfind
 OBJS = $(SRCS:%.cpp=%.o)
 SRC = $(addprefix $(SRC_DIR),$(SRCS))
 OBJ = $(addprefix $(OBJ_DIR),$(OBJS))
@@ -45,7 +44,7 @@ all : ${SOFT_NAME}
 
 ${OBJ_DIR}%.o : $(SRC_DIR)%.cpp $(OBJF) Makefile
 	@echo "${BLUE}###${NC}Creation du fichier ${@:%.cpp=%.o}${BLUE}###${ORANGE}"
-	${CC} ${FLAGS} -c $< -o $@
+	${CXX} ${CXXFLAGS} -c $< -o $@
 	@echo "${NC}"
 
 $(OBJF) :
@@ -54,7 +53,7 @@ $(OBJF) :
 
 ${SOFT_NAME} : ${OBJ}
 	@echo "${BLUE}###${NC}Creation du fichier ${SOFT_NAME}${BLUE}###${ORANGE}"
-	${CC} ${OBJ} ${FLAGS} -o ${SOFT_NAME}
+	${CXX} ${OBJ} ${CXXFLAGS} -o ${SOFT_NAME}
 	@echo "${NC}"
 
 -include ${DEPS}

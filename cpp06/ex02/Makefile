@@ -6,19 +6,20 @@
 #    By: chillion <chillion@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/01 12:07:22 by chillion          #+#    #+#              #
-#    Updated: 2023/03/01 11:55:04 by chillion         ###   ########.fr        #
+#    Updated: 2023/02/28 17:17:40 by chillion         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-.PHONY : all norm clean fclean re test
+.PHONY : all clean fclean re test
 
-CC := c++
-FLAGS := -std=c++98 -g3 -Wall -Wextra -Werror -MMD -MP -Isources/
-# FLAGS += -fsanitize=address
+CXX := c++
+CXXFLAGS := -std=c++98 -Wall -Wextra -Werror -MMD -MP -Isources/
+# CXXFLAGS += -fsanitize=address
+CXXFLAGS += -g3
 SRC_DIR := sources/
-OBJ_DIR := remove/
+OBJ_DIR := objects/
 RM := rm
-VAL := valgrind --leak-check=full --track-origins=yes
+VAL := valgrind --leak-check=full --track-origins=yes --track-fds=yes 
 
 BLACK = \033[1;30m
 REDBG = \033[30;41m
@@ -30,24 +31,33 @@ MAGENTA = \033[0;35m
 CYAN = \033[0;36m
 NC = \033[0m
 
-COMPIL = make all -C
-REMOVE = make fclean -C
-DEL = .delete
+SRCS =	Base.cpp	\
+		main.cpp	\
 
-SRCS =	$(wildcard cpp*/ex*)
-
-SOFT_NAME := MakeAll
-OBJS = $(SRCS=%.tmp)
-SRC := $(addprefix $(SRC_DIR),$(SRCS))
-RSR := $(addprefix $(OBJ_DIR),$(SRCS))
-NORM := $(wildcard *.cpp) $(wildcard *.hpp)
+SOFT_NAME := TypeIdentifier
+OBJS = $(SRCS:%.cpp=%.o)
+SRC = $(addprefix $(SRC_DIR),$(SRCS))
+OBJ = $(addprefix $(OBJ_DIR),$(OBJS))
+DEPS = $(OBJ:%.o=%.d)
+OBJF := ${OBJ_DIR}.cache_exists
 
 all : ${SOFT_NAME}
 
-$(SRC) :
-	$(COMPIL) $(@:sources/%=%)
+${OBJ_DIR}%.o : $(SRC_DIR)%.cpp $(OBJF) Makefile
+	@echo "${BLUE}###${NC}Creation du fichier ${@:%.cpp=%.o}${BLUE}###${ORANGE}"
+	${CXX} ${CXXFLAGS} -c $< -o $@
+	@echo "${NC}"
 
-${SOFT_NAME} : $(SRC)
+$(OBJF) :
+	@mkdir -p ${OBJ_DIR}
+	@touch ${OBJF}
+
+${SOFT_NAME} : ${OBJ}
+	@echo "${BLUE}###${NC}Creation du fichier ${SOFT_NAME}${BLUE}###${ORANGE}"
+	${CXX} ${OBJ} ${CXXFLAGS} -o ${SOFT_NAME}
+	@echo "${NC}"
+
+-include ${DEPS}
 
 test : all
 	$(VAL) ./${SOFT_NAME}
@@ -57,15 +67,10 @@ clean :
 	${RM} -rf ${OBJ_DIR} ${OBJF}
 	@echo "${GREEN}###${NC}Nettoyage OK${GREEN}###${NC}\n"
 
-fclean : $(DEL)
-
-$(RSR) :
-	$(REMOVE) $(@:remove/%=%)
-
-$(DEL) : $(RSR)
+fclean : clean
+	@echo "${RED}###${NC}Nettoyage d'archives et de Softs${RED}###"
+	${RM} -f ${SOFT_NAME}
+	@echo "${GREEN}###${NC}Nettoyage OK${GREEN}###${NC}\n"
 
 re : fclean all
 
-norm :
-	${MAKE} norm -C libs/libft
-	@norminette $(NORM) | grep -v OK! || true

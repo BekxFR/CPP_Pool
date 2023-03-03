@@ -59,8 +59,8 @@ void	RobotomyRequestForm::execute(Bureaucrat const &executor) const
 		std::cerr << e.what() << std::endl;
 		return ;
 	}
+	std::srand(time(0));
 	bool trueFalse = ((rand() % 6) < 3);
-	// std::srand(time(0));
 	std::cout << "Bzrrr Bzrrrr Bzrrrrrr Bzrr Bzrrr ";
 	std::cout << "Bzrrr Bzrr Bzrrr Bzrrr Bzrrrrr" << std::endl;
 	std::cout << "Bzrrrr Bzrrrrr Bzrrr Bzrr Bzrrrr ";
