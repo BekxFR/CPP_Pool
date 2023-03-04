@@ -6,7 +6,7 @@
 /*   By: chillion <chillion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 12:07:08 by chillion          #+#    #+#             */
-/*   Updated: 2023/03/03 18:00:34 by chillion         ###   ########.fr       */
+/*   Updated: 2023/03/04 17:20:45 by chillion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,5 +95,47 @@ int main()
 		std::cout << "Value not found !" << std::endl;
 	else
 		std::cout << "Value match !" << std::endl;
+
+	std::cout << "#########################################" << std::endl;
+
+	std::vector<int> v2;
+
+	if (easyfind<std::vector<int> >(v2, 2) == v2.end())
+		std::cout << "Value not found !" << std::endl;
+	else
+		std::cout << "Value match !" << std::endl;
+
+	std::srand(time(0));
+	long int ref = 0;
+	for (int i = 0; i < 20000; i++)
+	{
+		if (i == 10000)
+		{
+			ref = (rand() % INT_MAX);
+			v2.push_back(ref);
+		}
+		else
+			v2.push_back((rand() % INT_MAX));
+	}
+
+	if (easyfind<std::vector<int> >(v2, (rand() % INT_MAX)) == v2.end())
+		std::cout << "Value not found !" << std::endl;
+	else
+		std::cout << "Value match !" << std::endl;
+
+	if (easyfind<std::vector<int> >(v2, ref) == v2.end())
+		std::cout << "Value not found !" << std::endl;
+	else
+		std::cout << "Value match !" << std::endl;
+
+	if (easyfind<std::vector<int> >(v2, (rand() % INT_MAX)) == v2.end())
+		std::cout << "Value not found !" << std::endl;
+	else
+		std::cout << "Value match !" << std::endl;
+
+	std::cout << "Vector size value = " << v2.size() << std::endl;
+	
+	std::cout << "#########################################" << std::endl;
+
 	return (0);
 }

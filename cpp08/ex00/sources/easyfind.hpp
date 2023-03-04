@@ -6,6 +6,7 @@
 # include <list>
 #include <algorithm>
 #include <deque>
+#include <limits.h>
 
 template<typename T>
 typename T::iterator easyfind(T &t, int const int_search);

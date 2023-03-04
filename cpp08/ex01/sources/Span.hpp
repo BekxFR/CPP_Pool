@@ -10,8 +10,8 @@
 class Span
 {
 	private:
-		unsigned int _N;
 		std::vector<int> _v;
+		unsigned int _N;
 		Span();
 
 	public:
@@ -20,43 +20,15 @@ class Span
 		~Span();
 		Span &operator=(Span const &obj);
 
-		void addNumber(int const value)
-		{
-				if (this->_N == _v.size())
-					throw std::length_error("Unaccepted size overflow");
-				_v.push_back(value);
-		}
-		int shortestSpan()
-		{
-			if (_v.size() <= 1)
-				throw std::length_error("Not enaugh value for shortestSpan");
-			int min_span = INT_MAX;
-			std::vector<int> tmp = _v;
-			std::sort(tmp.begin(), tmp.end());
-			for (std::vector<int>::iterator it_tmp = tmp.begin(); it_tmp != tmp.end(); ++it_tmp)
-			{
-				int span = *(it_tmp + 1) - *it_tmp;
-				if (span < min_span)
-					min_span = span;
-			}
-			return (min_span);
-		}
-		int longtestSpan()
-		{
-			if (_v.size() <= 1)
-				throw std::length_error("Not enaugh value for longtestSpan");
-			int max_span = 0;
-			std::vector<int> tmp = _v;
-			std::sort(tmp.begin(), tmp.end());
-			for (std::vector<int>::iterator it_tmp = tmp.begin(); it_tmp != tmp.end(); ++it_tmp)
-			{
-				int span = *(it_tmp + 1) - *it_tmp;
-				if (span > max_span)
-					max_span = span;
-			}
-			return (max_span);
+		unsigned int		getSize() const;
+		std::vector<int>	getVector() const;
 
-		}
+		void		addNumber(int const value);
+		void		addRange(std::vector<int>::iterator const &begin, std::vector<int>::iterator const &end);
+		long int	shortestSpan();
+		long int	longestSpan();
+
+		void		ChangeValue(int const target, int const value);
 };
 
 #endif
