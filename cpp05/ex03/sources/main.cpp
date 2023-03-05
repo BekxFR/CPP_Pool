@@ -6,7 +6,7 @@
 /*   By: chillion <chillion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 11:15:53 by chillion          #+#    #+#             */
-/*   Updated: 2023/03/01 11:34:44 by chillion         ###   ########.fr       */
+/*   Updated: 2023/03/05 19:13:28 by chillion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@ int main()
 {
 Intern RandomIntern;
 AForm *ppb;
-ppb = RandomIntern.makeForm("presidential pardon", "Bender");
+ppb = RandomIntern.makeForm("presideHntial pardon", "Bender");
 
+if (!ppb)
+	return (0);
 Bureaucrat test("Louis", 1);
 test.executeForm(*ppb);
 test.signForm(*ppb);
