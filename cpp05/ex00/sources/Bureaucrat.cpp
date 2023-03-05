@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: chillion <chillion@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/01 11:03:34 by chillion          #+#    #+#             */
+/*   Updated: 2023/03/01 11:03:38 by chillion         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
@@ -5,11 +16,6 @@ Bureaucrat::Bureaucrat() : _name("Unknow Name"), _grade(150)
 {
 	std::cout << "Bureaucrat Default Constructor called" << std::endl;
 }
-
-// Bureaucrat::Bureaucrat(std::string const name) : _name(name), _grade(150)
-// {
-// 	std::cout << "Bureaucrat Overload Constructor called" << std::endl;
-// }
 
 Bureaucrat::Bureaucrat(std::string const name, int grade) : _name(name)
 {

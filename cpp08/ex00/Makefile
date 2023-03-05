@@ -6,7 +6,7 @@
 #    By: chillion <chillion@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/01 12:07:22 by chillion          #+#    #+#              #
-#    Updated: 2023/03/03 11:47:31 by chillion         ###   ########.fr        #
+#    Updated: 2023/03/05 16:18:04 by chillion         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ CXXFLAGS += -g3
 SRC_DIR := sources/
 OBJ_DIR := objects/
 RM := rm
-VAL := valgrind --leak-check=full --track-origins=yes --track-fds=yes 
+VAL := valgrind --leak-check=full --track-origins=yes
 
 BLACK = \033[1;30m
 REDBG = \033[30;41m

@@ -6,7 +6,7 @@
 /*   By: chillion <chillion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 12:07:08 by chillion          #+#    #+#             */
-/*   Updated: 2023/03/04 17:20:45 by chillion         ###   ########.fr       */
+/*   Updated: 2023/03/05 16:24:46 by chillion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int main()
 {
 	std::vector<int> v;
 
-	if (easyfind<std::vector<int> >(v, 2) == v.end())
+	if (easyfind(v, 2) == v.end()) // == easyfind<std::vector<int> >(v, 2) == v.end()
 		std::cout << "Value not found !" << std::endl;
 	else
 		std::cout << "Value match !" << std::endl;

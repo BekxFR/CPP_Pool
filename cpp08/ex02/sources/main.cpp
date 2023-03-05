@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: chillion <chillion@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/05 16:50:59 by chillion          #+#    #+#             */
+/*   Updated: 2023/03/05 19:05:14 by chillion         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "MutantStack.hpp"
 #include <list>
 
@@ -64,6 +76,7 @@ int main()
 			std::cout << e.what() << std::endl;
 		}
 	}
+	std::cout << "###MutantStack#############################################" << std::endl;
 	{
 		try
 		{
@@ -103,31 +116,32 @@ int main()
 			{
 				std::cout << *it << " ";
 			}
-
+			std::cout << *mutantStack.begin();
 			std::cout << "\nEn parcourant avec un const-itérateur : ";
 			for (MutantStack<int>::const_iterator cit = mutantStack.cend() - 1; cit != mutantStack.cbegin(); --cit)
 			{
 				std::cout << *cit << " ";
 			}
-
+			std::cout << *mutantStack.cbegin();
 			std::cout << "\nEn parcourant avec un itérateur inversé : ";
 			for (MutantStack<int>::reverse_iterator it = mutantStack.rend() - 1; it != mutantStack.rbegin(); --it)
 			{
 				std::cout << *it << " ";
 			}
-
+			std::cout << *mutantStack.rbegin();
 			std::cout << "\nEn parcourant avec un const-itérateur inversé : ";
 			for (MutantStack<int>::const_reverse_iterator rit = mutantStack.crend() - 1; rit != mutantStack.crbegin(); --rit)
 			{
 				std::cout << *rit << " ";
 			}
-			std::cout << std::endl;
+			std::cout << *mutantStack.crbegin() << std::endl;
 		}
 		catch (const std::exception &e)
 		{
 			std::cout << e.what() << std::endl;
 		}
 	}
+	std::cout << "###List#############################################" << std::endl;
 	{
 		try
 		{
@@ -169,6 +183,7 @@ int main()
 			{
 				std::cout << *it << " ";
 			}
+			std::cout << *it;
 			std::list<int>::const_iterator cit = mutantStack.end();
 			--cit;
 			std::cout << "\nEn parcourant avec un const-itérateur : ";
@@ -176,6 +191,7 @@ int main()
 			{
 				std::cout << *cit << " ";
 			}
+			std::cout << *cit;
 			std::list<int>::reverse_iterator it2 = mutantStack.rend();
 			--it2;
 			std::cout << "\nEn parcourant avec un itérateur inversé : ";
@@ -183,6 +199,7 @@ int main()
 			{
 				std::cout << *it2 << " ";
 			}
+			std::cout << *it2;
 			std::list<int>::const_reverse_iterator rit = mutantStack.rend();
 			--rit;
 			std::cout << "\nEn parcourant avec un const-itérateur inversé : ";
@@ -190,7 +207,7 @@ int main()
 			{
 				std::cout << *rit << " ";
 			}
-			std::cout << std::endl;
+			std::cout << *rit << std::endl;
 		}
 		catch (const std::exception &e)
 		{

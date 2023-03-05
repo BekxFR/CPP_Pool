@@ -6,6 +6,13 @@ int Account::_totalAmount = 0;
 int Account::_totalNbDeposits = 0;
 int Account::_totalNbWithdrawals = 0;
 
+Account::Account(int initial_deposit) : _accountIndex(Account::_nbAccounts++), _amount(initial_deposit), _nbDeposits(0), _nbWithdrawals(0)
+{
+	Account::_totalAmount += initial_deposit;
+	Account::_displayTimestamp();
+	std::cout << " index:" << _accountIndex << ";amount:" << initial_deposit << ";created" << std::endl;
+}
+
 Account::~Account( void )
 {
 	_displayTimestamp();
@@ -14,13 +21,6 @@ Account::~Account( void )
 	std::cout << "closed" << std::endl;
 }
 
-Account::Account(int initial_deposit)
-	: _accountIndex(Account::_nbAccounts++), _amount(initial_deposit), _nbDeposits(0), _nbWithdrawals(0)
-{
-	Account::_totalAmount += initial_deposit;
-	Account::_displayTimestamp();
-	std::cout << " index:" << _accountIndex << ";amount:" << initial_deposit << ";created" << std::endl;
-}
 
 void	Account::displayAccountsInfos( void )
 {
@@ -43,18 +43,20 @@ int Account::getTotalAmount(void)
 	return Account::_totalAmount;
 }
 
-int Account::getNbDeposits(void) {
+int Account::getNbDeposits(void)
+{
 	return _totalNbDeposits;
 }
 
-int Account::getNbWithdrawals(void) {
+int Account::getNbWithdrawals(void)
+{
 	return _totalNbWithdrawals;
 }
 
 void Account::_displayTimestamp(void)
 {
 	time_t rawtime;
-	struct tm * timeinfo;
+	struct tm *timeinfo;
 	char buffer[20];
 
 	time (&rawtime);
@@ -64,7 +66,8 @@ void Account::_displayTimestamp(void)
 	std::cout << "[" << buffer << "]";
 }
 
-void Account::makeDeposit(int deposit) {
+void Account::makeDeposit(int deposit)
+{
 	_displayTimestamp();
 	std::cout << " index:" << _accountIndex << ";p_amount:" << _amount;
 	_totalAmount += deposit;
@@ -92,11 +95,13 @@ bool Account::makeWithdrawal(int withdrawal)
 	return true;
 }
 
-int Account::checkAmount(void) const {
+int Account::checkAmount(void) const
+{
 	return _amount;
 }
 
-void Account::displayStatus(void) const {
+void Account::displayStatus(void) const
+{
 	Account::_displayTimestamp();
 	std::cout << " index:" << this->_accountIndex << ";amount:" << this->_amount 
 	<< ";deposits:" << this->_nbDeposits << ";withdrawals:" << this->_nbWithdrawals << std::endl;

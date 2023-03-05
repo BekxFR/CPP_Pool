@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Span.hpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: chillion <chillion@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/05 16:29:11 by chillion          #+#    #+#             */
+/*   Updated: 2023/03/05 18:48:44 by chillion         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SPAN_HPP
 #define SPAN_HPP
 
@@ -24,11 +36,11 @@ class Span
 		std::vector<int>	getVector() const;
 
 		void		addNumber(int const value);
-		void		addRange(std::vector<int>::iterator const &begin, std::vector<int>::iterator const &end);
+		void		addNumber(std::vector<int>::const_iterator const begin, std::vector<int>::const_iterator const end);
 		long int	shortestSpan();
 		long int	longestSpan();
 
-		void		ChangeValue(int const target, int const value);
+		void		changeValue(int const target, int const value);
 };
 
 #endif

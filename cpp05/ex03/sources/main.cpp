@@ -1,19 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: chillion <chillion@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/01 11:15:53 by chillion          #+#    #+#             */
+/*   Updated: 2023/03/01 11:34:44 by chillion         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Intern.hpp"
 
 int main()
 {
 
 {
-Intern someRandomIntern;
-AForm *rrf;
-rrf = someRandomIntern.makeForm("presidential pardon", "Bender");
+Intern RandomIntern;
+AForm *ppb;
+ppb = RandomIntern.makeForm("presidential pardon", "Bender");
 
 Bureaucrat test("Louis", 1);
-test.executeForm(*rrf);
-test.signForm(*rrf);
-test.executeForm(*rrf);
+test.executeForm(*ppb);
+test.signForm(*ppb);
+test.executeForm(*ppb);
 
-delete rrf;
+delete ppb;
 
 std::cout << "###########################################" << std::endl;
 
@@ -70,9 +82,6 @@ std::cout << "###########################################" << std::endl;
 	form2.execute(test3);
 	test3.signForm(form2);
 	test3.executeForm(form2);
-	test3.executeForm(form2);
-	test3.executeForm(form2);
-	test3.executeForm(form2);
 
 	std::cout << "###########################################" << std::endl;
 
@@ -86,12 +95,10 @@ std::cout << "###########################################" << std::endl;
 	std::cout << "###########################################" << std::endl;
 
 	test3.executeForm(form2);
-	test3.executeForm(form2);
 	test2.signForm(form3);
 	test3.signForm(form3);
 	test3.executeForm(form3);
 	test2.executeForm(form3);
-
 }
 	return (0);
 }

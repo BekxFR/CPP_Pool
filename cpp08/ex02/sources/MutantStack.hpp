@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   MutantStack.hpp                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: chillion <chillion@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/05 16:51:04 by chillion          #+#    #+#             */
+/*   Updated: 2023/03/05 19:05:20 by chillion         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef MUTANTSTACK_HPP
 #define MUTANTSTACK_HPP
 
@@ -30,7 +42,7 @@ class MutantStack : public std::stack<T>
 };
 
 
-//MutantStack herite de la STL std::stack mais au lieu d'utiliser deque par default elle utilise un vecteur pour stocker les elements
+// MutantStack herite de la STL std::stack mais au lieu d'utiliser deque par default elle utilise un vecteur pour stocker les elements
 // template<typename T>
 // class MutantStack : public std::stack<T, std::vector<T> >
 // {

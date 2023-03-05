@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: chillion <chillion@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/01 11:13:18 by chillion          #+#    #+#             */
+/*   Updated: 2023/03/01 11:34:52 by chillion         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ShrubberyCreationForm.hpp"
 #include <unistd.h>
 
@@ -54,9 +66,6 @@ int main()
 	form2.execute(test3);
 	test3.signForm(form2);
 	test3.executeForm(form2);
-	test3.executeForm(form2);
-	test3.executeForm(form2);
-	test3.executeForm(form2);
 
 	std::cout << "###########################################" << std::endl;
 
@@ -70,12 +79,10 @@ int main()
 	std::cout << "###########################################" << std::endl;
 
 	test3.executeForm(form2);
-	test3.executeForm(form2);
 	test2.signForm(form3);
 	test3.signForm(form3);
 	test3.executeForm(form3);
 	test2.executeForm(form3);
-
 }
 	return (0);
 }

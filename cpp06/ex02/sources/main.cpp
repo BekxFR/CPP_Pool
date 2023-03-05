@@ -4,14 +4,12 @@ Base	*generate(void)
 {
 	std::srand(time(0));
 	int classID = ((rand() % 3));
-	classID = ((classID + ((rand() % 3))) / 2);
 
-	std::cout << "random = " << classID << std::endl; 
 	if (classID == 0)
-		return new A();
+		return (new A());
 	if (classID == 2)
-		return new B();
-	return new C();
+		return (new B());
+	return (new C());
 }
 
 void	identify(Base *p)

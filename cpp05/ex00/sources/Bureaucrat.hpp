@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: chillion <chillion@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/01 11:03:28 by chillion          #+#    #+#             */
+/*   Updated: 2023/03/01 11:12:08 by chillion         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef BUREAUCRAT_HPP
 #define BUREAUCRAT_HPP
@@ -12,7 +23,6 @@ class Bureaucrat
 		Bureaucrat();
 
 	public:
-		// Bureaucrat(std::string const name);
 		Bureaucrat(std::string const name, int grade);
 		Bureaucrat(Bureaucrat const &obj);
 		~Bureaucrat();
@@ -25,27 +35,21 @@ class Bureaucrat
 		void gradeIncrement();
 		void gradeDecrement();
 
-	class GradeTooHighException : virtual public std::exception
+	class GradeTooHighException : public std::exception
 	{
 		public:
-			virtual const char *what() const throw();
-			// GradeTooHighException() throw();
-			// GradeTooHighException(GradeTooHighException const &other) throw();
-			// virtual ~GradeTooHighException() throw();
+			const char *what() const throw();
 			
 	};
 
-	class GradeTooLowException : virtual public std::exception
+	class GradeTooLowException : public std::exception
 	{
 		public:
-			virtual const char *what() const throw();
-			// GradeTooLowException() throw();
-			// GradeTooLowException(GradeTooLowException const &other) throw();
-			// virtual ~GradeTooLowException() throw();
+			const char *what() const throw();
 			
 	};
 };
 
-std::ostream &operator <<(std::ostream &o, const Bureaucrat &bureaucrat);
+std::ostream &operator <<(std::ostream &o, const Bureaucrat &rhs);
 
 #endif

@@ -6,12 +6,12 @@
 /*   By: chillion <chillion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 11:32:01 by chillion          #+#    #+#             */
-/*   Updated: 2023/03/03 11:39:25 by chillion         ###   ########.fr       */
+/*   Updated: 2023/03/05 15:37:45 by chillion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 template<typename T>
-std::size_t Array<T>::Array::size() const
+unsigned int Array<T>::Array::size() const
 {
 	return (this->_size);
 }
@@ -54,7 +54,7 @@ Array<T>::Array::Array(Array const &obj) : _array(NULL), _size(0)
 template<typename T>
 Array<T>::Array::~Array()
 {
-	if (this->_size >= 0)
+	if (this->size() >= 0)
 		delete [] this->_array;
 	std::cout << "Array Destructor called" << std::endl;
 }
@@ -64,11 +64,11 @@ Array<T> &Array<T>::Array::operator=(Array<T> const &obj)
 {
 	if (this == &obj)
 		return (*this);
-	if (this->_size > 0)
+	if (this->size() >= 0)
 		delete [] this->_array;
 	this->_array = new T[obj.size()];
 	this->_size = obj.size();
-	for (unsigned int i = 0; i < this->_size; i++)
+	for (unsigned int i = 0; i < this->size(); i++)
 		this->_array[i] = obj._array[i];
 	std::cout << "Array Copy assignment operator called" << std::endl;
 	return *this;
@@ -77,7 +77,7 @@ Array<T> &Array<T>::Array::operator=(Array<T> const &obj)
 template<typename T>
 T &Array<T>::Array::operator[](unsigned int idx)
 {
-	if (idx < 0 || this->_size <= idx)
+	if (idx < 0 || this->size() <= idx)
 		throw std::out_of_range("Index tab value unvailable !");
 	return (this->_array[idx]);
 }

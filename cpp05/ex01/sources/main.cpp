@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: chillion <chillion@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/01 11:06:15 by chillion          #+#    #+#             */
+/*   Updated: 2023/03/01 11:29:24 by chillion         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Bureaucrat.hpp"
 
 int main()
@@ -12,13 +24,11 @@ int main()
 
 	test2.gradeDecrement();
 
-	test2 = test;
-
 	std::cout << test2 << std::endl;
 
 	test2.gradeDecrement();
 
-	Bureaucrat test3(test2); // HIGH LEVEL
+	Bureaucrat test3(test); // HIGH LEVEL
 
 	std::cout << test3 << std::endl;
 
@@ -83,10 +93,12 @@ int main()
 	test2.signForm(form2); // LOW AND HIGH NOK
 	std::cout << form2 << std::endl;
 
-/* 
+
 	try
 	{
 		form1.beSigned(test3);
+		// Already Sign NOK
+		std::cout << form1 << std::endl;
 	}
 	catch (Bureaucrat::GradeTooLowException &e)
 	{
@@ -102,8 +114,6 @@ int main()
 		std::cerr << test3.getName() << " couldn’t sign " << form1.getName() << " because ";
 		std::cerr << e.what() << std::endl;
 	}
-	 // Already Sign NOK
-	std::cout << form1 << std::endl;
- */
+
 	return (0);
 }

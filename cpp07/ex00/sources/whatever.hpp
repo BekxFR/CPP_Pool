@@ -6,7 +6,7 @@
 /*   By: chillion <chillion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 12:15:24 by chillion          #+#    #+#             */
-/*   Updated: 2023/03/02 17:02:01 by chillion         ###   ########.fr       */
+/*   Updated: 2023/03/05 15:00:10 by chillion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,37 +46,6 @@ void swap (T &a, T &b)
 	b = a;
 	a = tmp;
 }
-
-// template <Class T>
-// class mypair
-// {
-// 		T a, b;
-// 	public:
-// 		mypair (T first, T second)
-// 		{
-// 			a=first; b=second;
-// 		}
-// 		T max ();
-// 		T min ();
-// 		void swap ();
-// };
-
-// template <Class T> T mypair<T>::max ()
-// {
-// 	return (a>b? a : b);
-// }
-
-// template <Class T> T mypair<T>::min ()
-// {
-// 	return (a<b? a : b);
-// }
-
-// template <Class T> void mypair<T>::swap ()
-// {
-// 	T tmp = b;
-// 	b = a;
-// 	a = tmp;
-// }
 
 #endif
 

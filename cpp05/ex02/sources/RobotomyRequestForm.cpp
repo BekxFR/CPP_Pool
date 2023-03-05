@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: chillion <chillion@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/01 11:13:35 by chillion          #+#    #+#             */
+/*   Updated: 2023/03/01 11:30:55 by chillion         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "RobotomyRequestForm.hpp"
 #include <cstdlib>
 
@@ -60,7 +72,7 @@ void	RobotomyRequestForm::execute(Bureaucrat const &executor) const
 		return ;
 	}
 	std::srand(time(0));
-	bool trueFalse = ((rand() % 6) < 3);
+	bool trueFalse = ((rand() % 4) < 2);
 	std::cout << "Bzrrr Bzrrrr Bzrrrrrr Bzrr Bzrrr ";
 	std::cout << "Bzrrr Bzrr Bzrrr Bzrrr Bzrrrrr" << std::endl;
 	std::cout << "Bzrrrr Bzrrrrr Bzrrr Bzrr Bzrrrr ";

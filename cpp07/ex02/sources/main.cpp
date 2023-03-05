@@ -6,7 +6,7 @@
 /*   By: chillion <chillion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 11:40:49 by chillion          #+#    #+#             */
-/*   Updated: 2023/03/03 11:38:52 by chillion         ###   ########.fr       */
+/*   Updated: 2023/03/05 16:06:53 by chillion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ std::cout << "######################################" << std::endl;
 		tbool2[41] = false;
 		std::cout << "tbool[41] = " << tbool[41] << std::endl;
 		std::cout << "tbool2[41] = " << tbool2[41] << std::endl;
+		std::cout << "tbool2[41] = " << tbool2[42] << std::endl;
 	}
 	catch(const std::exception &e)
 	{

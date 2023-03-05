@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Form.hpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: chillion <chillion@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/01 11:06:11 by chillion          #+#    #+#             */
+/*   Updated: 2023/03/01 11:23:36 by chillion         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FORM_HPP
 #define FORM_HPP
 
@@ -30,26 +42,32 @@ class Form
 
 		int		testGrade(unsigned int grade) const;
 		void	formChecker(Bureaucrat &bureaucrat);
+		void	execChecker(const Bureaucrat& obj) const;
 
-	class GradeTooHighException : virtual public std::exception
+	class GradeTooHighException : public std::exception
 	{
 		public:
-			virtual const char *what() const throw();
+			const char *what() const throw();
 	};
-	class GradeTooLowException : virtual public std::exception
+	class GradeTooLowException : public std::exception
 	{
 		public:
-			virtual const char *what() const throw();
+			const char *what() const throw();
 	};
-	class GradeUnvailableException : virtual public std::exception
+	class GradeUnvailableException : public std::exception
 	{
 		public:
-			virtual const char *what() const throw();
+			const char *what() const throw();
 	};
-	class SignStatusException : virtual public std::exception
+	class SignStatusException : public std::exception
 	{
 		public:
-			virtual const char *what() const throw();
+			const char *what() const throw();
+	};
+	class NoSignStatusException : public std::exception
+	{
+		public:
+			const char *what() const throw();
 	};
 };
 

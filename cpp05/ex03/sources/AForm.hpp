@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   AForm.hpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: chillion <chillion@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/01 11:14:26 by chillion          #+#    #+#             */
+/*   Updated: 2023/03/01 11:14:37 by chillion         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef AFORM_HPP
 #define AFORM_HPP
 
@@ -34,30 +46,30 @@ class AForm
 
 		virtual void		execute(Bureaucrat const &executor) const = 0;
 
-	class GradeTooHighException : virtual public std::exception
+	class GradeTooHighException : public std::exception
 	{
 		public:
-			virtual const char *what() const throw();
+			const char *what() const throw();
 	};
-	class GradeTooLowException : virtual public std::exception
+	class GradeTooLowException : public std::exception
 	{
 		public:
-			virtual const char *what() const throw();
+			const char *what() const throw();
 	};
-	class GradeUnvailableException : virtual public std::exception
+	class GradeUnvailableException : public std::exception
 	{
 		public:
-			virtual const char *what() const throw();
+			const char *what() const throw();
 	};
-	class SignStatusException : virtual public std::exception
+	class SignStatusException : public std::exception
 	{
 		public:
-			virtual const char *what() const throw();
+			const char *what() const throw();
 	};
-	class NoSignStatusException : virtual public std::exception
+	class NoSignStatusException : public std::exception
 	{
 		public:
-			virtual const char *what() const throw();
+			const char *what() const throw();
 	};
 };
 

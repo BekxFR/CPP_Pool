@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Form.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: chillion <chillion@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/01 11:07:14 by chillion          #+#    #+#             */
+/*   Updated: 2023/03/01 11:24:58 by chillion         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Form.hpp"
 
 Form::Form() : _name("Undefined"), _signGrade(160), _execGrade(160)
@@ -130,11 +142,27 @@ void	Form::beSigned(Bureaucrat &bureaucrat)
 	this->_signed = true;
 }
 
+void Form::execChecker(const Bureaucrat& obj) const
+{
+	if (this->getSigned() == false)
+	{
+		throw (NoSignStatusException());
+	}
+	if (this->getSignGrade() == 0 || this->getExecGrade() == 0)
+	{
+		throw (GradeUnvailableException());
+	}
+	else if (obj.getGrade() > this->getExecGrade())
+	{
+		throw (Bureaucrat::GradeTooLowException());
+	}
+}
+
 void	Form::beExec(Bureaucrat &bureaucrat)
 {
 	try
 	{
-		this->formChecker(bureaucrat);
+		this->execChecker(bureaucrat);
 	}
 	catch (Bureaucrat::GradeTooLowException &e)
 	{
@@ -148,7 +176,7 @@ void	Form::beExec(Bureaucrat &bureaucrat)
 		std::cerr << e.what() << std::endl;
 		return ;
 	}
-	catch (Form::SignStatusException &e)
+	catch (NoSignStatusException &e)
 	{
 		std::cerr << bureaucrat.getName() << " couldn’t execut " << this->getName() << " because ";
 		std::cerr << e.what() << std::endl;
@@ -174,6 +202,11 @@ const char *Form::GradeUnvailableException::what() const throw()
 const char *Form::SignStatusException::what() const throw()
 {
 	return ("Form is already Sign ! Don't need another Sign !"); 
+}
+
+const char *Form::NoSignStatusException::what() const throw()
+{
+	return ("Form is not sign ! Can't use Form if he's not Sign !"); 
 }
 
 std::ostream &operator<<(std::ostream &o,Form const &rhs)

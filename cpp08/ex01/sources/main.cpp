@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: chillion <chillion@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/05 16:29:01 by chillion          #+#    #+#             */
+/*   Updated: 2023/03/05 18:56:13 by chillion         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Span.hpp"
 
 int main()
 {
-	std::cout << "###OK AddNumber######" << std::endl;
+	std::cout << "###OK addNumber Simple######" << std::endl;
 {
 	try
 	{
@@ -56,7 +68,7 @@ int main()
 		std::cerr << e.what() << '\n';
 	}
 }
-	std::cout << "###ERROR AddNumber######" << std::endl;
+	std::cout << "###ERROR addNumber Simple######" << std::endl;
 {
 	try
 	{
@@ -75,7 +87,7 @@ int main()
 		std::cerr << e.what() << '\n';
 	}
 }
-std::cout << "###ERROR AddRange######" << std::endl;
+std::cout << "###ERROR addNumber Range######" << std::endl;
 {
 	try
 	{
@@ -83,7 +95,7 @@ std::cout << "###ERROR AddRange######" << std::endl;
 	std::vector<int> tmp;
 	for (int i = 0; i < 20001; i++)
 		tmp.push_back(i);
-	sp.addRange(tmp.begin(), tmp.end());
+	sp.addNumber(tmp.begin(), tmp.end());
 	std::cout << sp.shortestSpan() << std::endl;
 	std::cout << sp.longestSpan() << std::endl;
 	}
@@ -92,7 +104,7 @@ std::cout << "###ERROR AddRange######" << std::endl;
 		std::cerr << e.what() << '\n';
 	}
 }
-std::cout << "###OK AddRange######" << std::endl;
+std::cout << "###OK addNumber Range######" << std::endl;
 {
 	try
 	{
@@ -100,7 +112,7 @@ std::cout << "###OK AddRange######" << std::endl;
 	std::vector<int> tmp;
 	for (int i = 0; i < 20000; i++)
 		tmp.push_back(i);
-	sp.addRange(tmp.begin(), tmp.end());
+	sp.addNumber(tmp.begin(), tmp.end());
 	std::cout << sp.shortestSpan() << std::endl;
 	std::cout << sp.longestSpan() << std::endl;
 	}
@@ -109,7 +121,7 @@ std::cout << "###OK AddRange######" << std::endl;
 		std::cerr << e.what() << '\n';
 	}
 }
-std::cout << "###COPY AND CHANGE shortest to 1 (OR 0) AND ERROR AddNumber######" << std::endl;
+std::cout << "###COPY AND CHANGE shortest to 1 (OR 0) AND ERROR addNumber Simple######" << std::endl;
 {
 	try
 	{
@@ -121,7 +133,7 @@ std::cout << "###COPY AND CHANGE shortest to 1 (OR 0) AND ERROR AddNumber######"
 	std::cout << "TMP MIN = " << *std::min_element(tmp.begin(), tmp.end()) << std::endl;
 	std::cout << "TMP MAX = " << *std::max_element(tmp.begin(), tmp.end()) << std::endl;
 	std::cout << "TMP MAX DIF = " << *std::max_element(tmp.begin(), tmp.end()) - *std::min_element(tmp.begin(), tmp.end()) << std::endl;
-	sp.addRange(tmp.begin(), tmp.end());
+	sp.addNumber(tmp.begin(), tmp.end());
 	std::cout << "---BASE-----" << std::endl;
 	std::cout << sp.shortestSpan() << std::endl;
 	std::cout << sp.longestSpan() << std::endl;
@@ -130,8 +142,8 @@ std::cout << "###COPY AND CHANGE shortest to 1 (OR 0) AND ERROR AddNumber######"
 	std::cout << cp_sp.shortestSpan() << std::endl;
 	std::cout << cp_sp.longestSpan() << std::endl;
 	std::cout << "---COPY MODIFY-----" << std::endl;
-	cp_sp.ChangeValue(0, -10);
-	cp_sp.ChangeValue(1, -11);
+	cp_sp.changeValue(0, -10);
+	cp_sp.changeValue(1, -11);
 	std::cout << cp_sp.shortestSpan() << std::endl;
 	std::cout << cp_sp.longestSpan() << std::endl;
 	std::cout << "---BASE-----" << std::endl;
@@ -150,7 +162,7 @@ std::cout << "###COPY AND CHANGE shortest to 1 (OR 0) AND ERROR AddNumber######"
 		std::cerr << e.what() << '\n';
 	}
 }
-std::cout << "###ERROR SIZE 0 AddNumber######" << std::endl;
+std::cout << "###ERROR SIZE 0 addNumber Simple######" << std::endl;
 {
 	try
 	{
@@ -187,6 +199,27 @@ std::cout << "###OK SIZE == 2 0 0######" << std::endl;
 		sp.addNumber(5);
 		std::cout << sp.shortestSpan() << std::endl;
 		std::cout << sp.longestSpan() << std::endl;
+	}
+	catch(const std::exception &e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+}
+std::cout << "###OK SIZE == 2 0 0######" << std::endl;
+{
+	try
+	{
+		Span sp = Span(4);
+		std::vector<int> tmp;
+		tmp.push_back(1);
+		tmp.push_back(10);
+		sp.addNumber(tmp.begin(), tmp.end());
+		std::cout << sp.shortestSpan() << std::endl;
+		std::cout << sp.longestSpan() << std::endl;
+		sp.addNumber(tmp.begin(), tmp.end());
+		std::cout << sp.shortestSpan() << std::endl;
+		std::cout << sp.longestSpan() << std::endl;
+		sp.addNumber(tmp.begin(), tmp.end());
 	}
 	catch(const std::exception &e)
 	{

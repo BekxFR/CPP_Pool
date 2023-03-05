@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ScalarConversion.cpp                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: chillion <chillion@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/01 16:39:01 by chillion          #+#    #+#             */
+/*   Updated: 2023/03/01 16:39:02 by chillion         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ScalarConversion.hpp"
 
 ScalarConversion::ScalarConversion()
@@ -26,7 +38,9 @@ ScalarConversion &ScalarConversion::operator=(ScalarConversion const &obj)
 bool ScalarConversion::isChar(std::string str)
 {
 	if (str.size() == 1 && !std::isdigit(str[0]))
+	{
 		return (true);
+	}
 	return (false);
 }
 
@@ -135,7 +149,7 @@ void	ScalarConversion::displayChar(char _char)
 	float	_float = static_cast<float>(_char);
 	double	_double = static_cast<double>(_char);
 
-	if (std::isgraph(_char))
+	if (_char == 32 || std::isgraph(_char))
 		std::cout << "char: '" << _char << "'" << std::endl;
 	else
 		std::cout << "char: Non displayable" << std::endl;
@@ -150,7 +164,7 @@ void	ScalarConversion::displayInt(int _int)
 	float	_float = static_cast<float>(_int);
 	double	_double = static_cast<double>(_int);
 
-	if (std::isgraph(_char) && _int < 256)
+	if (_char == 32 || std::isgraph(_char))
 		std::cout << "char: '" << _char << "'" << std::endl;
 	else
 		std::cout << "char: Non displayable" << std::endl;
@@ -165,7 +179,7 @@ void	ScalarConversion::displayFloat(float _float, std::string str)
 	int		_int = static_cast<int>(_float);
 	double	_double = static_cast<double>(_float);
 
-	if (std::isgraph(_char))
+	if (_char == 32 || std::isgraph(_char))
 		std::cout << "char: '" << _char << "'" << std::endl;
 	else if (str == "-inff" || str == "+inff" || str == "nanf")
 		std::cout << "char: impossible" << std::endl;
@@ -196,8 +210,8 @@ void	ScalarConversion::displayDouble(double _double, std::string str)
 	float	_float = static_cast<float>(_double);
 	int		_int = static_cast<int>(_double);
 	
-	if (std::isgraph(_char))
-		std::cout << "char: " << _char << std::endl;
+	if (_char == 32 || std::isgraph(_char))
+		std::cout << "char: '" << _char << "'" << std::endl;
 	else if (str == "-inf" || str == "+inf" || str == "nan")
 		std::cout << "char: impossible" << std::endl;
 	else

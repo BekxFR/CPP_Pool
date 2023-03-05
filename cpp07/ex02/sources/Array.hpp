@@ -6,7 +6,7 @@
 /*   By: chillion <chillion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 13:02:48 by chillion          #+#    #+#             */
-/*   Updated: 2023/03/03 11:39:30 by chillion         ###   ########.fr       */
+/*   Updated: 2023/03/04 15:11:31 by chillion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ class Array
 		Array &operator=(Array const &obj);
 		T &operator[](unsigned int idx);
 		// T &operator[](unsigned int idx) const;
-		std::size_t	size() const;
+		unsigned int	size() const;
 };
 
 #include "Array.tpp"

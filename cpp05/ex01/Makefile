@@ -6,7 +6,7 @@
 #    By: chillion <chillion@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/01 12:07:22 by chillion          #+#    #+#              #
-#    Updated: 2023/02/24 12:45:32 by chillion         ###   ########.fr        #
+#    Updated: 2023/03/01 11:45:36 by chillion         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@
 CXX := c++
 CXXFLAGS := -std=c++98 -Wall -Wextra -Werror -MMD -MP -Isources/
 # CXXFLAGS += -fsanitize=address
-CXXFLAGS += -g3
+# CXXFLAGS += -g3
 SRC_DIR := sources/
 OBJ_DIR := objects/
 RM := rm

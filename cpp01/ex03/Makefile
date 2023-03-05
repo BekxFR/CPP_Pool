@@ -6,14 +6,14 @@
 #    By: chillion <chillion@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/01 12:07:22 by chillion          #+#    #+#              #
-#    Updated: 2023/02/13 17:31:07 by chillion         ###   ########.fr        #
+#    Updated: 2023/02/13 12:30:43 by chillion         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 .PHONY : all clean fclean re test
 
 CC := c++
-FLAGS := -std=c++98 -g3 -Wall -Wextra -Werror -MMD -MP -Isources/
+FLAGS := -std=c++98 -Wall -Wextra -Werror -MMD -MP -Isources/
 #FLAGS += -fsanitize=address
 SRC_DIR := sources/
 OBJ_DIR := objects/
