@@ -54,7 +54,9 @@
 		"stdexcept": "cpp",
 		"streambuf": "cpp",
 		"cinttypes": "cpp",
-		"typeinfo": "cpp"
+		"typeinfo": "cpp",
+		"list": "cpp",
+		"map": "cpp"
 	},
 	"workbench.colorCustomizations": {
 		"activityBar.activeBackground": "#c171f2",
