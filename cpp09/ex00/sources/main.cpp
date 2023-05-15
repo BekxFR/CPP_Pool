@@ -10,14 +10,9 @@ int main(int argc, char **argv)
 	BitcoinExchange exchange;
 	if (exchange.Database_File_Parser("../cpp_09/data.csv"))
 		return (1);
-	exchange.Print_Map(exchange.Get_Data_Map());
+	exchange.Print_Map(exchange.getDataMap());
 	std::string path = argv[1];
 	exchange.Search_File_Parser(path);
-	std::cout << " JEME CASSE!!!!!!!!!!!!!!!!!!!!!!!!" << std::endl;
-	exchange.Print_Map(exchange.Get_Search_Map());
-
-	// exchange(path);
-	// exchange.print();
 	return (0);
 	// check if argv[1] is a file
 	// if not, throw exception

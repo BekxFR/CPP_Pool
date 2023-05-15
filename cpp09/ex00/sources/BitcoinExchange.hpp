@@ -7,48 +7,70 @@
 #include <sstream>
 #include <cstdlib>
 #include <limits.h>
+#include <string>
+#include <stdexcept>
+
+#include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
+#include <exception>
+#include <iostream>
+#include <memory>
+#include <cstring>
+
+#include <regex>
 
 class BitcoinExchange
 {
 	private:
 		std::map<std::string, float> _data;
-		std::map<std::string, float> _search;
-		// std::map<std::string,std::pair<std::string,int> > _data;
-	/* data */
 
 	public:
 		BitcoinExchange();
-		// BitcoinExchange(const std::string& file);
 		BitcoinExchange(BitcoinExchange const &obj);
 		~BitcoinExchange();
 		BitcoinExchange &operator=(BitcoinExchange const &obj);
 
 		void	Print_Map(std::map<std::string, float> mymap);
-		// void	Print() const;
-		// void	Print(const std::string& date) const;
-		// void	Print(const std::string& date, float value) const;
-		// void	Print(const std::string& date, float value, float amount) const;
-		// void	Print(const std::string& date, float value, float amount, float total) const;
 
-		// void	Parse(const std::string& file);
-		// void	Parse(const std::string& date, const std::string& value);
-		// float 	Get(const std::string& date) const;
-		// float 	Get(const std::string& date, float value) const;
-		// float 	Get(const std::string& date, float value, float amount) const;
-		// float 	Get(const std::string& date, float value, float amount, float total) const;
+		int			Database_File_Parser(const std::string& filename);
+		int			Check_Data_Value(const std::string& valeur);
+		int			Check_Final_Data_Value(const float& valeur);
+		int			Check_Date(const std::string& date);
+		int			Parse_Line_Value(const std::string& line);
+		void		Search_File_Parser(const std::string& filename);
+		int			Pre_Search_File_Parser(const std::string& filename);
+		std::string	Close_Date(const std::string& date);
 
+		std::map<std::string, float>	getDataMap() const { return _data; };
 
-		int		Database_File_Parser(const std::string& filename);
-		int		Check_Data_Value(const std::string& valeur);
-		int		Check_Date(const std::string& date);
-		int		Parse_Line_Value(const std::string& line);
-		void	Search_File_Parser(const std::string& filename);
-		int		Pre_Search_File_Parser(const std::string& filename);
+		int		Regex_Check_Data_Value(const std::string& value);
+		int		Regex_Check_Date(const std::string& date);
+		float	Stream_Change_String_To_Float(const std::string& str);
+		float	Stof_Change_String_To_Float(const std::string& line);
 
-		std::map<std::string, float>	Get_Data_Map() { return _data; };
-		std::map<std::string, float>	Get_Search_Map() { return _search; };
 
 };
+
 float	Change_String_To_Float(const std::string& str);
+
+class UnvailableFloatValue : public std::exception {
+	public:
+		UnvailableFloatValue(const char* message) : msg_(new char[36 + std::strlen(message)]) {
+			std::strcpy(msg_, "Error: Wrong value find in file : ");
+			std::strcat(msg_, message);
+		}
+
+		const char* what() const throw() {
+			return msg_;
+		}
+
+		~UnvailableFloatValue() {
+			delete[] msg_;
+		}
+
+	private:
+		char* msg_;
+};
 
 #endif
