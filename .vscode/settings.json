@@ -56,7 +56,9 @@
 		"cinttypes": "cpp",
 		"typeinfo": "cpp",
 		"list": "cpp",
-		"map": "cpp"
+		"map": "cpp",
+		"regex": "cpp",
+		"bitset": "cpp"
 	},
 	"workbench.colorCustomizations": {
 		"activityBar.activeBackground": "#c171f2",
