@@ -58,7 +58,8 @@
 		"list": "cpp",
 		"map": "cpp",
 		"regex": "cpp",
-		"bitset": "cpp"
+		"bitset": "cpp",
+		"*.tpp": "cpp"
 	},
 	"workbench.colorCustomizations": {
 		"activityBar.activeBackground": "#c171f2",

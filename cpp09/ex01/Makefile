@@ -6,7 +6,7 @@
 #    By: chillion <chillion@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/01 12:07:22 by chillion          #+#    #+#              #
-#    Updated: 2023/05/12 11:57:36 by chillion         ###   ########.fr        #
+#    Updated: 2023/05/16 14:17:38 by chillion         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,9 +31,9 @@ MAGENTA = \033[0;35m
 CYAN = \033[0;36m
 NC = \033[0m
 
-SRCS =	main.cpp	\
+SRCS =	main.cpp	RPN.cpp	\
 
-SOFT_NAME := 
+SOFT_NAME := RPN
 OBJS = $(SRCS:%.cpp=%.o)
 SRC = $(addprefix $(SRC_DIR),$(SRCS))
 OBJ = $(addprefix $(OBJ_DIR),$(OBJS))
@@ -59,7 +59,7 @@ ${SOFT_NAME} : ${OBJ}
 -include ${DEPS}
 
 test : all
-	$(VAL) ./${SOFT_NAME}
+	$(VAL) ./${SOFT_NAME} "88 9 * 9 - 9 - 9 - 4 - 1 +"
 
 clean : 
 	@echo "${RED}###${NC}Nettoyage des fichiers .o${RED}###"
