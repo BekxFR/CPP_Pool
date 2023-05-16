@@ -20,10 +20,13 @@
 
 #include <regex>
 
+# define DEBUG 0
+
 class BitcoinExchange
 {
 	private:
-		std::map<std::string, float> _data;
+		std::map<std::string, float>	_data;
+		bool							_baseStatus;
 
 	public:
 		BitcoinExchange();
@@ -33,7 +36,7 @@ class BitcoinExchange
 
 		void	Print_Map(std::map<std::string, float> mymap);
 
-		int			Database_File_Parser(const std::string& filename);
+		bool		Database_File_Parser(const std::string& filename);
 		int			Check_Data_Value(const std::string& valeur);
 		int			Check_Final_Data_Value(const float& valeur);
 		int			Check_Date(const std::string& date);
@@ -43,6 +46,7 @@ class BitcoinExchange
 		std::string	Close_Date(const std::string& date);
 
 		std::map<std::string, float>	getDataMap() const { return _data; };
+		bool							getBaseStatus() const { return _baseStatus; };
 
 		int		Regex_Check_Data_Value(const std::string& value);
 		int		Regex_Check_Date(const std::string& date);

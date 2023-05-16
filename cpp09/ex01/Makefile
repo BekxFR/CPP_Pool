@@ -6,7 +6,7 @@
 #    By: chillion <chillion@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/01 12:07:22 by chillion          #+#    #+#              #
-#    Updated: 2023/05/16 14:17:38 by chillion         ###   ########.fr        #
+#    Updated: 2023/05/16 15:44:24 by chillion         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@
 CXX := c++
 CXXFLAGS := -std=c++98 -Wall -Wextra -Werror -MMD -MP -Isources/
 # CXXFLAGS += -fsanitize=address
-CXXFLAGS += -g3
+# CXXFLAGS += -g3
 SRC_DIR := sources/
 OBJ_DIR := objects/
 RM := rm
@@ -59,7 +59,7 @@ ${SOFT_NAME} : ${OBJ}
 -include ${DEPS}
 
 test : all
-	$(VAL) ./${SOFT_NAME} "88 9 * 9 - 9 - 9 - 4 - 1 +"
+	$(VAL) ./${SOFT_NAME} "8 9 * 9 - 9 - 9 - 4 - 1 + 8 + 9 9 - + 2 2 / * 2 / "
 
 clean : 
 	@echo "${RED}###${NC}Nettoyage des fichiers .o${RED}###"

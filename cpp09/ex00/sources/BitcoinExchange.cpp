@@ -1,9 +1,10 @@
 
 #include "BitcoinExchange.hpp"
 
-BitcoinExchange::BitcoinExchange()
+BitcoinExchange::BitcoinExchange() : _data(), _baseStatus(Database_File_Parser("../cpp_09/data.csv"))
 {
-	std::cout << "BitcoinExchange Default Constructor called" << std::endl;
+	if (DEBUG == 1)
+		std::cout << "BitcoinExchange Default Constructor called" << std::endl;
 }
 
 BitcoinExchange::BitcoinExchange(BitcoinExchange const &obj)
@@ -13,14 +14,18 @@ BitcoinExchange::BitcoinExchange(BitcoinExchange const &obj)
 
 BitcoinExchange::~BitcoinExchange()
 {
-	std::cout << "BitcoinExchange Destructor called" << std::endl;
+	if (DEBUG == 1)
+		std::cout << "BitcoinExchange Destructor called" << std::endl;
 }
 
 BitcoinExchange &BitcoinExchange::operator=(BitcoinExchange const &obj)
 {
-	if (this != &obj)
+	if (this != &obj) {
 		this->_data = obj.getDataMap();
-	std::cout << "BitcoinExchange Copy assignment operator called" << std::endl;
+		this->_baseStatus = obj.getBaseStatus();
+	}
+	if (DEBUG == 1)
+		std::cout << "BitcoinExchange Copy assignment operator called" << std::endl;
 	return *this;
 }
 
@@ -29,25 +34,24 @@ bool isValidDate(int day, int month, int year)
 	if (year < 0 || month < 1 || month > 12 || day < 1 || day > 31) {
 		return false;
 	}
-
 	if (month == 4 || month == 6 || month == 9 || month == 11) {
 		if (day > 30) {
-			return false;
+			return (false);
 		}
 	}
 	else if (month == 2) {
 		if (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)) {
 			if (day > 29) {
-				return false;
+				return (false);
 			}
 		}
 		else {
 			if (day > 28) {
-				return false;
+				return (false);
 			}
 		}
 	}
-	return true;
+	return (true);
 }
 
 float	BitcoinExchange::Stream_Change_String_To_Float(const std::string& value)
@@ -107,13 +111,11 @@ int BitcoinExchange::Check_Data_Value(const std::string& valeur)
 	try 
 	{
 		value = Stream_Change_String_To_Float(valeur);
-		// value = Change_String_To_Float(word);
 	}
 	catch (UnvailableFloatValue &e)
 	{
-		std::cerr << e.what() << std::endl;
+		std::cout << e.what() << std::endl;
 	}
-	// value = Change_String_To_Float(valeur);
 	if (static_cast<long int>(value) < 0 || static_cast<long int>(value) > INT_MAX)
 		return (1);
 	return (0);
@@ -123,12 +125,12 @@ int BitcoinExchange::Check_Final_Data_Value(const float& value)
 {
 	if (static_cast<long int>(value) < 0)
 	{
-		std::cerr << "Error: not a positive number." << std::endl;
+		std::cout << "Error: not a positive number." << std::endl;
 		return (1);
 	}
 	if (static_cast<long int>(value) > 1000)
 	{
-		std::cerr << "Error: too large a number." << std::endl;
+		std::cout << "Error: too large a number." << std::endl;
 		return (1);
 		
 	}
@@ -183,7 +185,6 @@ void	BitcoinExchange::Print_Map(std::map<std::string, float> mymap)
 
 int	BitcoinExchange::Parse_Line_Value(const std::string& line)
 {
-	// std::cerr << "FDGDGDGDGFD" << line << std::endl;
 	std::istringstream str(line);
 	int count = 0;
 	std::string word;
@@ -207,18 +208,14 @@ int	BitcoinExchange::Parse_Line_Value(const std::string& line)
 		{
 			try 
 			{
-				// value = Stream_Change_String_To_Float(valeur);
 				this->_data[tmp] = Stream_Change_String_To_Float(word);
-				// value = Change_String_To_Float(word);
 				// this->_data[tmp] = Change_String_To_Float(word);
 			}
 			catch (UnvailableFloatValue &e)
 			{
-				// std::cerr << e.what() << std::endl;
 				break ;
 			}
 		}
-			// this->_data[tmp] = Change_String_To_Float(word);
 		count++;
 	}
 	if (count != 2)
@@ -226,12 +223,12 @@ int	BitcoinExchange::Parse_Line_Value(const std::string& line)
 	return (0);
 }
 
-int	BitcoinExchange::Database_File_Parser(const std::string& filename)
+bool	BitcoinExchange::Database_File_Parser(const std::string& filename)
 {
 	std::ifstream file(filename.c_str());
 	if (!file.is_open()) {
-		std::cerr << "Error: could not open file." << std::endl;
-		return (1);
+		std::cout << "Error: could not open file." << std::endl;
+		return (true);
 	}
 	std::string	line;
 	std::getline(file, line);
@@ -241,23 +238,24 @@ int	BitcoinExchange::Database_File_Parser(const std::string& filename)
 		// if (!file.eof() && this->Parse_Line_Value(line))
 		if (this->Parse_Line_Value(line))
 		{
-			// std::cerr << "Error: Database file is not correctly formated." << std::endl;
+			;
+			// std::cout << "Error: Database file is not correctly formated." << std::endl;
 			// return (0);
 		}
 	}
 	if (this->_data.empty())
 	{
-		std::cerr << "Error: Database file is empty." << std::endl;
-		return (1);
+		std::cout << "Error: Database file is empty." << std::endl;
+		return (false);
 	}
-	return (0);
+	return (true);
 }
 
 int	BitcoinExchange::Pre_Search_File_Parser(const std::string& filename)
 {
 	std::ifstream file(filename.c_str());
 	if (!file.is_open()) {
-		std::cerr << "Error: could not open file." << std::endl;
+		std::cout << "Error: could not open file." << std::endl;
 		return (1);
 	}
 	std::string			line;
@@ -315,7 +313,7 @@ void	BitcoinExchange::Search_File_Parser(const std::string& filename)
 {
 	std::ifstream file(filename.c_str());
 	if (!file.is_open()) {
-		std::cerr << "Error: could not open file." << std::endl;
+		std::cout << "Error: could not open file." << std::endl;
 		return ;
 	}
 	std::string			line;
@@ -351,7 +349,7 @@ void	BitcoinExchange::Search_File_Parser(const std::string& filename)
 				}
 				catch (UnvailableFloatValue &e)
 				{
-					std::cerr << e.what() << std::endl;
+					std::cout << e.what() << std::endl;
 					break ;
 				}
 				if (Check_Final_Data_Value(value) == 1)
@@ -362,7 +360,6 @@ void	BitcoinExchange::Search_File_Parser(const std::string& filename)
 					if (date.size() == 0)
 						date = tmp;
 					std::cout << tmp << " => " << word << " = " << (this->_data[date] * value) << std::endl;
-					// std::cout << "LOG DATE USE = " << date << std::endl;
 				}
 			}
 			count++;
