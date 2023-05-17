@@ -8,8 +8,7 @@
 class PmergeMe
 {
 	private:
-	// 	f
-	/* data */
+		/* data */
 
 	public:
 		PmergeMe();

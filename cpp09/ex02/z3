@@ -1,0 +1,123 @@
+ELSE debut = 0 MiLieu = 42 fin = 84
+ELSE debut = 0 MiLieu = 21 fin = 42
+ELSE debut = 0 MiLieu = 10 fin = 21
+TRI debut = 0 fin = 10
+TRI debut = 11 fin = 21
+FUFU debut = 0 MiLieu = 10 fin = 21
+i = 0 j = 11 k = 0
+debut = 0 et k = 22
+ELSE debut = 22 MiLieu = 32 fin = 42
+TRI debut = 22 fin = 32
+TRI debut = 33 fin = 42
+FUFU debut = 22 MiLieu = 32 fin = 42
+i = 22 j = 33 k = 0
+debut = 22 et k = 21
+FUFU debut = 0 MiLieu = 21 fin = 42
+i = 0 j = 22 k = 0
+debut = 0 et k = 43
+ELSE debut = 43 MiLieu = 63 fin = 84
+ELSE debut = 43 MiLieu = 53 fin = 63
+TRI debut = 43 fin = 53
+TRI debut = 54 fin = 63
+FUFU debut = 43 MiLieu = 53 fin = 63
+i = 43 j = 54 k = 0
+debut = 43 et k = 21
+ELSE debut = 64 MiLieu = 74 fin = 84
+TRI debut = 64 fin = 74
+TRI debut = 75 fin = 84
+FUFU debut = 64 MiLieu = 74 fin = 84
+i = 64 j = 75 k = 0
+debut = 64 et k = 21
+FUFU debut = 43 MiLieu = 63 fin = 84
+i = 43 j = 64 k = 0
+debut = 43 et k = 42
+FUFU debut = 0 MiLieu = 42 fin = 84
+i = 0 j = 43 k = 0
+debut = 0 et k = 85
+Vector print :
+0
+0
+0
+0
+0
+1
+1
+1
+1
+1
+2
+2
+2
+2
+2
+3
+3
+3
+3
+3
+4
+4
+4
+4
+4
+4
+4
+4
+4
+4
+5
+5
+5
+5
+5
+6
+6
+6
+6
+6
+7
+7
+7
+7
+7
+8
+8
+8
+8
+8
+8
+8
+8
+8
+8
+8
+8
+8
+8
+8
+9
+9
+9
+9
+9
+9
+9
+9
+9
+9
+9
+9
+9
+9
+9
+10
+10
+10
+10
+10
+11
+11
+11
+11
+11
+Vector end!

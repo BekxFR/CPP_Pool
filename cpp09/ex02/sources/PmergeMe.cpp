@@ -1,24 +1,22 @@
 #include "PmergeMe.hpp"
 
-PmergeMe::PmergeMe()
-{
+PmergeMe::PmergeMe() {
 	if (DEBUG)
 		std::cout << "PmergeMe Default Constructor called" << std::endl;
 }
 
-PmergeMe::PmergeMe(PmergeMe const &obj)
-{
+PmergeMe::PmergeMe(const PmergeMe& obj) {
 	*this = obj;
 }
 
-PmergeMe::~PmergeMe()
-{
+PmergeMe::~PmergeMe() {
 	if (DEBUG)
 		std::cout << "PmergeMe Destructor called" << std::endl;
 }
 
-PmergeMe &PmergeMe::operator=(PmergeMe const &obj)
-{
+PmergeMe &PmergeMe::operator=(const PmergeMe& obj) {
+	if (this != &obj)
+		;
 	if (DEBUG)
 		std::cout << "PmergeMe Copy assignment operator called" << std::endl;
 	return *this;

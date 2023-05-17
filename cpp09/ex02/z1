@@ -1,0 +1,148 @@
+valgrind --leak-check=full --track-origins=yes ./PmergeMe
+ELSE debut = 0 MiLieu = 42 fin = 84
+ELSE debut = 0 MiLieu = 21 fin = 42
+ELSE debut = 0 MiLieu = 10 fin = 21
+TRI debut = 0 fin = 10
+TRI debut = 11 fin = 21
+FUFU debut = 0 MiLieu = 10 fin = 21
+i = 11 j = 17 k = 17
+ELSE debut = 22 MiLieu = 32 fin = 42
+TRI debut = 22 fin = 32
+TRI debut = 33 fin = 42
+FUFU debut = 22 MiLieu = 32 fin = 42
+i = 31 j = 43 k = 19
+FUFU debut = 0 MiLieu = 21 fin = 42
+i = 22 j = 42 k = 42
+ELSE debut = 43 MiLieu = 63 fin = 84
+ELSE debut = 43 MiLieu = 53 fin = 63
+TRI debut = 43 fin = 53
+TRI debut = 54 fin = 63
+FUFU debut = 43 MiLieu = 53 fin = 63
+i = 52 j = 64 k = 19
+ELSE debut = 64 MiLieu = 74 fin = 84
+TRI debut = 64 fin = 74
+TRI debut = 75 fin = 84
+FUFU debut = 64 MiLieu = 74 fin = 84
+i = 75 j = 84 k = 20
+FUFU debut = 43 MiLieu = 63 fin = 84
+i = 64 j = 83 k = 40
+FUFU debut = 0 MiLieu = 42 fin = 84
+i = 43 j = 82 k = 82
+
+ELSE debut = 0 MiLieu = 42 fin = 84
+ELSE debut = 43 MiLieu = 63 fin = 84
+ELSE debut = 64 MiLieu = 74 fin = 84
+TRI debut = 75 fin = 84
+TRI debut = 64 fin = 74
+FUFU debut = 64 MiLieu = 74 fin = 84
+i = 75 j = 84 k = 20
+ELSE debut = 43 MiLieu = 53 fin = 63
+TRI debut = 54 fin = 63
+TRI debut = 43 fin = 53
+FUFU debut = 43 MiLieu = 53 fin = 63
+i = 52 j = 64 k = 19
+FUFU debut = 43 MiLieu = 63 fin = 84
+i = 64 j = 83 k = 40
+ELSE debut = 0 MiLieu = 21 fin = 42
+ELSE debut = 22 MiLieu = 32 fin = 42
+TRI debut = 33 fin = 42
+TRI debut = 22 fin = 32
+FUFU debut = 22 MiLieu = 32 fin = 42
+i = 31 j = 43 k = 19
+ELSE debut = 0 MiLieu = 10 fin = 21
+TRI debut = 11 fin = 21
+TRI debut = 0 fin = 10
+FUFU debut = 0 MiLieu = 10 fin = 21
+i = 11 j = 17 k = 17
+FUFU debut = 0 MiLieu = 21 fin = 42
+i = 22 j = 42 k = 42
+FUFU debut = 0 MiLieu = 42 fin = 84
+i = 43 j = 82 k = 82
+
+Vector print :
+0
+0
+0
+0
+0
+1
+1
+1
+1
+1
+2
+2
+2
+2
+2
+3
+3
+3
+3
+3
+4
+4
+4
+4
+4
+4
+4
+4
+4
+4
+5
+5
+5
+5
+5
+6
+6
+6
+6
+6
+7
+7
+7
+7
+7
+8
+8
+8
+8
+8
+8
+8
+8
+8
+8
+8
+8
+8
+8
+8
+9
+9
+9
+9
+9
+9
+9
+9
+9
+9
+9
+9
+9
+9
+9
+10
+10
+10
+10
+10
+11
+11
+11
+11
+11
+Vector end!
