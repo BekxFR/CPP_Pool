@@ -344,8 +344,8 @@ void	BitcoinExchange::Search_File_Parser(const std::string& filename)
 			{
 				try 
 				{
-					value = Stream_Change_String_To_Float(word);
-					// value = Change_String_To_Float(word);
+					// value = Stream_Change_String_To_Float(word);
+					value = Change_String_To_Float(word);
 				}
 				catch (UnvailableFloatValue &e)
 				{
@@ -367,34 +367,34 @@ void	BitcoinExchange::Search_File_Parser(const std::string& filename)
 	}
 }
 
-float	BitcoinExchange::Stof_Change_String_To_Float(const std::string& line)
-{
-	float value = 0;
-	try 
-	{
-		value = std::stof(line);
-	}
-	catch (std::exception &e)
-	{
-		throw UnvailableFloatValue(line.c_str());
-	}
-	return (value);
-}
+// float	BitcoinExchange::Stof_Change_String_To_Float(const std::string& line)
+// {
+// 	float value = 0;
+// 	try 
+// 	{
+// 		value = std::stof(line);
+// 	}
+// 	catch (std::exception &e)
+// 	{
+// 		throw UnvailableFloatValue(line.c_str());
+// 	}
+// 	return (value);
+// }
 
-int	BitcoinExchange::Regex_Check_Date(const std::string& date)
-{
-	std::regex	regex_date("^[0-9]{4}-[0-9]{2}-[0-9]{2}$");
+// int	BitcoinExchange::Regex_Check_Date(const std::string& date)
+// {
+// 	std::regex	regex_date("^[0-9]{4}-[0-9]{2}-[0-9]{2}$");
 
-	if (std::regex_match(date, regex_date))
-		return (0);
-	return (1);
-}
+// 	if (std::regex_match(date, regex_date))
+// 		return (0);
+// 	return (1);
+// }
 
-int	BitcoinExchange::Regex_Check_Data_Value(const std::string& value)
-{
-	std::regex	regex_value("^[+-]?[0-9]+(\\.[0-9]+)?$");
+// int	BitcoinExchange::Regex_Check_Data_Value(const std::string& value)
+// {
+// 	std::regex	regex_value("^[+-]?[0-9]+(\\.[0-9]+)?$");
 
-	if (std::regex_match(value, regex_value))
-		return (0);
-	return (1);
-}
+// 	if (std::regex_match(value, regex_value))
+// 		return (0);
+// 	return (1);
+// }

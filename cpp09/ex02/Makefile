@@ -6,7 +6,7 @@
 #    By: chillion <chillion@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/01 12:07:22 by chillion          #+#    #+#              #
-#    Updated: 2023/05/16 17:10:53 by chillion         ###   ########.fr        #
+#    Updated: 2023/05/22 18:00:44 by chillion         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ MAGENTA = \033[0;35m
 CYAN = \033[0;36m
 NC = \033[0m
 
-SRCS =	main.cpp	\
+SRCS =	main.cpp	PmergeMe.cpp	\
 
 SOFT_NAME := PmergeMe
 OBJS = $(SRCS:%.cpp=%.o)

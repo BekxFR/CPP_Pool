@@ -16,19 +16,12 @@
 // 1 : Decomposer la sequence - decouper chaque element (ex : chaque entier dans un maillon d'une liste chainee)
 // 2 : Tri par insertion des sous-sequences - parcourir chaque sous-sequence de gauche a droite 
 
-#include <vector>
-#include <list>
-#include <algorithm>
-
 const int TAILLE_SEUIL = 10;  // Taille seuil pour utiliser le tri par insertion
-
-
-#include <typeinfo>
 
 template <typename T>
 void myPrintTemplate(const T& arr) {
 	if (arr.begin() == arr.end())
-		std::cout << "Vector is actually empty" << std::endl;
+		std::cout << "Data is actually empty" << std::endl;
 	// std::cout << "Container type: " << typeid(T).name() << std::endl;
 	std::cout << "Vector print :" << std::endl;
 	typename T::const_iterator it = arr.begin();
@@ -38,164 +31,196 @@ void myPrintTemplate(const T& arr) {
 }
 
 template <typename T>
-void myPrintTemplate(T b, T e) {
+void myOneLinePrintTemplate(const T& arr, const std::string& text) {
+	if (arr.begin() == arr.end())
+		std::cout << "Data is actually empty" << std::endl;
+	if (DEBUG)
+		std::cout << "Container type: " << typeid(T).name() << std::endl;
+	std::cout << text;
+	typename T::const_iterator it = arr.begin();
+	for (; it != arr.end(); it++)
+		std::cout << *it << " ";
+	std::cout << std::endl;
+}
+
+template <typename T>
+void myItPrintTemplate(T b, T e) {
 	std::cout << "ITERATOR PRinT" << std::endl;
 	if (e == b)
-		std::cout << "2Vector is actually empty" << std::endl;
+		std::cout << "2Data is actually empty" << std::endl;
 	// std::cout << "Container type: " << typeid(T).name() << std::endl;
-	std::cout << "2Vector print :" << std::endl;
+	std::cout << "2Data print :" << std::endl;
 	for (; b != e; b++)
 		std::cout << *b << std::endl;
-	std::cout << "2Vector end!" << std::endl;
+	std::cout << "2Data end!" << std::endl;
+}
+
+time_t getTime()
+{
+	struct timeval tv;
+
+	gettimeofday(&tv, NULL);
+	if (DEBUG) {
+		std::cout << "sec = " << tv.tv_sec << " usec = " << tv.tv_usec << std::endl;
+		std::cout << "sec = " << (tv.tv_sec * 1000) << " usec = " << (tv.tv_usec / 1000) << " total = " << ((tv.tv_sec * 1000) + (tv.tv_usec / 1000)) << std::endl;
+	}
+	return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000));
+}
+
+void	printSortStatus(size_t size, std::string type, float time)
+{
+	std::cout << "Time to process a range of " << size << " elements with " << type << " : " << time << " us" << std::endl;
 }
 
 // Implémentation de l'algorithme de tri par fusion-insertion
-void mergeInsertionSort(std::vector<int>& arr, int debut, int fin) {
+void merge_Insertion_Sort(std::vector<int>& arr, int debut, int fin) {
     if (fin - debut <= TAILLE_SEUIL) {
-		 
-		std::cout << "TRI" << " debut = " << debut << " fin = " << fin << std::endl;
-        // Utilisation du tri par insertion pour les sous-tableaux de petite taille
-		// myPrintTemplate(arr.begin() + debut, arr.begin() + fin + 1);
         std::sort(arr.begin() + debut, arr.begin() + fin + 1);
-		// myPrintTemplate(arr.begin() + debut, arr.begin() + fin + 1);
     } else {
         int milieu = debut + (fin - debut) / 2;
-		std::cout << "ELSE" << " debut = " << debut << " MiLieu = " << milieu << " fin = " << fin << std::endl;
-        
+
         // Tri récursif des sous-tableaux
-        mergeInsertionSort(arr, debut, milieu);
-        mergeInsertionSort(arr, milieu + 1, fin);
-        
-		std::cout << "FUFU" << " debut = " << debut << " MiLieu = " << milieu << " fin = " << fin << std::endl;
+        merge_Insertion_Sort(arr, debut, milieu);
+        merge_Insertion_Sort(arr, milieu + 1, fin);
+
         // Fusion des sous-tableaux triés
         std::vector<int> temp(fin - debut + 1);
         int i = debut, j = milieu + 1, k = 0;
-		// 
-		std::cout << "i = " << i << " j = " << j << " k = " << k << std::endl;
+
+		// tant que debut++ < milieu et milieu++ < fin
+		// si value[debut] <= value[milieu]
+		// 	tmp[k++] = value[debut++];
+		// sinon
+		// 	tmp[k++] = value[milieu++];
         while (i <= milieu && j <= fin) {
             if (arr[i] <= arr[j])
                 temp[k++] = arr[i++];
             else
                 temp[k++] = arr[j++];
         }
-        // myPrintTemplate(temp);
-        
+
+		// tant que debut++ < milieu
+		// 	tmp[k] = value[debut];
         while (i <= milieu)
             temp[k++] = arr[i++];
-        // myPrintTemplate(temp);
-        
+
+		// tant que milieu++ < fin
+		// 	tmp[k] = value[fin];
         while (j <= fin)
             temp[k++] = arr[j++];
-        // myPrintTemplate(temp);
-        
-		std::cout << "debut = " << debut << " et k = " << k << std::endl;
+
+		if (DEBUG)
+			std::cout << " debut = " << debut << " milieu = " << milieu << " fin = " << fin << " K = " << k << std::endl;
+
+		// tant que k < taille
+		// 	value[debut + k] = tmp[k];
         for (int m = 0; m < k; m++)
             arr[debut + m] = temp[m];
     }
 }
 
-// void mergeInsertionSort(std::list<int>& arr, int debut, int fin) {
+// // Implémentation de l'algorithme de tri par fusion-insertion
+// void mergeListInsertionSort(std::list<int>& arr, int debut, int fin) {
 //     if (fin - debut <= TAILLE_SEUIL) {
-//         // Utilisation du tri par insertion pour les sous-tableaux de petite taille
-//         std::sort(arr.begin() + debut, arr.begin() + fin + 1);
+//         std::sort(arr.rbegin() + debut, arr.rbegin() + fin + 1);
 //     } else {
 //         int milieu = debut + (fin - debut) / 2;
-        
+
 //         // Tri récursif des sous-tableaux
-//         mergeInsertionSort(arr, debut, milieu);
-//         mergeInsertionSort(arr, milieu + 1, fin);
-        
+//         mergeListInsertionSort(arr, debut, milieu);
+//         mergeListInsertionSort(arr, milieu + 1, fin);
+
 //         // Fusion des sous-tableaux triés
-//         std::vector<int> temp(fin - debut + 1);
+//         std::list<int> temp(fin - debut + 1);
 //         int i = debut, j = milieu + 1, k = 0;
-        
+
+// 		// tant que debut++ < milieu et milieu++ < fin
+// 		// si value[debut] <= value[milieu]
+// 		// 	tmp[k++] = value[debut++];
+// 		// sinon
+// 		// 	tmp[k++] = value[milieu++];
 //         while (i <= milieu && j <= fin) {
 //             if (arr[i] <= arr[j])
 //                 temp[k++] = arr[i++];
 //             else
 //                 temp[k++] = arr[j++];
 //         }
-        
+
+// 		// tant que debut++ < milieu
+// 		// 	tmp[k] = value[debut];
 //         while (i <= milieu)
 //             temp[k++] = arr[i++];
-        
+
+// 		// tant que milieu++ < fin
+// 		// 	tmp[k] = value[fin];
 //         while (j <= fin)
 //             temp[k++] = arr[j++];
-        
+
+// 		if (DEBUG)
+// 			std::cout << " debut = " << debut << " milieu = " << milieu << " fin = " << fin << " K = " << k << std::endl;
+
+// 		// tant que k < taille
+// 		// 	value[debut + k] = tmp[k];
 //         for (int m = 0; m < k; m++)
 //             arr[debut + m] = temp[m];
 //     }
 // }
 
-// template <typename T>
-// void mergeInsertionSort(T& arr) {
-//     mergeInsertionSort(arr, 0, arr.size() - 1);
-// }
-
-// void mergeInsertionSort(T& arr) {
-//     if (arr.size() <= TAILLE_SEUIL) {
-//         // Utilisation du tri par insertion pour les sous-tableaux de petite taille
-//         std::sort(arr.begin(), arr.end());
-//     } else {
-//         int milieu = arr.size() / 2;
-        
-//         // Tri récursif des sous-tableaux
-//         mergeInsertionSort(arr, 0, milieu);
-//         mergeInsertionSort(arr, milieu + 1, arr.size() - 1);
-        
-//         // Fusion des sous-tableaux triés
-//         std::vector<int> temp(arr.size());
-//         int i = 0, j = milieu + 1, k = 0;
-        
-//         while (i <= milieu && j <= arr.size() - 1) {
-//             if (arr[i] <= arr[j])
-//                 temp[k++] = arr[i++];
-//             else
-//                 temp[k++] = arr[j++];
-//         }
-        
-//         while (i <= milieu)
-//             temp[k++] = arr[i++];
-        
-//         while (j <= arr.size() - 1)
-//             temp[k++] = arr[j++];
-        
-//         for (int m = 0; m < k; m++)
-//             arr[m] = temp[m];
-//     }
-// }
-
-// void printVector(const std::vector<int>& vec) {
-// 	if (vec.begin() == vec.end())
-// 		std::cout << "Vector is actually empty" << std::endl;
-// 	std::cout << "Vector print :" << std::endl;
-// 	std::vector<int>::const_iterator it = vec.begin();
-// 	for (; it != vec.end(); it++)
-// 		std::cout << *it << std::endl;
-// 	std::cout << "Vector end!" << std::endl;
-// }
-
-// void printVector(const std::list<int>& vec) {
-// 	if (vec.begin() == vec.end())
-// 		std::cout << "Vector is actually empty" << std::endl;
-// 	std::cout << "Vector print :" << std::endl;
-// 	std::list<int>::const_iterator it = vec.begin();
-// 	for (; it != vec.end(); it++)
-// 		std::cout << *it << std::endl;
-// 	std::cout << "Vector end!" << std::endl;
-// }
-
-int	main()
+int onlyPositiveArgv(char *arg)
 {
-	int ivect[] = { 9, 8, 5, 0, 7 , 6, 2, 3, 1, 4, 4, 8, 9, 10, 11, 8, 9, 9, 8, 5, 0, 7 , 6, 2, 3, 1, 4, 4, 8, 9, 10, 11, 8, 9, 9, 8, 5, 0, 7 , 6, 2, 3, 1, 4, 4, 8, 9, 10, 11, 8, 9, 9, 8, 5, 0, 7 , 6, 2, 3, 1, 4, 4, 8, 9, 10, 11, 8, 9, 9, 8, 5, 0, 7 , 6, 2, 3, 1, 4, 4, 8, 9, 10, 11, 8, 9 };
-	int n = sizeof(ivect) / sizeof(ivect[0]);
+	if (strlen(arg) < 1)
+		return (1);
+	for (int i = 0; arg[i]; i++) {
+		if (arg[i] < '0' || arg[i] > '9')
+			return (1);
+	}
+	return (0);
+}
 
-	std::vector<int> myvect(ivect , ivect + n);
-	std::list<int> mylist(ivect , ivect + n);
 
-	// myPrintTemplate(myvect);
-	mergeInsertionSort(myvect, 0, n - 1);
-	myPrintTemplate(myvect);
-	// myPrintTemplate(mylist);
+
+int	main(int argc, char **argv)
+{
+	if (argc < 2)
+	{
+		std::cout << "Error: Wrong number of argument.\n";
+		std::cout << "Usage: ./PmergeMe `shuf -i 1-100000 -n 3000 | tr \"\\n\" \" \"`" << std::endl;
+		return (1);
+	}
+	int tab[argc - 1];
+	PmergeMe test;
+	// int *tab;
+	test.ParseData(argv, argc, tab);
+	// int ivect[] = { 9999, 9, 8, 5, 0, 7 , 6, 2, 3, 1, 4, 4, 8, 9, 10, 11, 8, 9, 9, 8, 5, 0, 7 , 6, 2, 3, 1, 4, 4, 8, 9, 10, 11, 8, 9, 9, 8, 5, 0, 7 , 6, 2, 3, 1, 4, 4, 8, 9, 10, 11, 8, 9, 9, 8, 5, 0, 7 , 6, 2, 3, 1, 4, 4, 8, 9, 10, 11, 8, 9, 9, 8, 5, 0, 7 , 6, 2, 3, 1, 4, 4, 8, 9, 10, 11, 8, 9, 0 };
+	// int n = sizeof(ivect) / sizeof(ivect[0]);
+	int n = sizeof(tab) / sizeof(tab[0]);
+
+	// std::vector<int> myvect(ivect , ivect + n);
+	// std::list<int> mylist(ivect , ivect + n);
+	std::vector<int> myvect(tab , tab + n);
+	std::list<int> mylist(tab , tab + n);
+
+	myOneLinePrintTemplate(myvect, "Before:\t");
+	if (DEBUG)
+		myPrintTemplate(myvect);
+
+	time_t deltaIn = getTime();
+	merge_Insertion_Sort(myvect, 0, n - 1);
+	time_t deltaOut = getTime();
+
+	if (DEBUG)
+		myPrintTemplate(myvect);
+
+	myOneLinePrintTemplate(myvect, "After:\t");
+	printSortStatus(myvect.size(), "std::vector", static_cast<float>(deltaOut - deltaIn));
+
+	if (DEBUG)
+		myPrintTemplate(mylist);
+	deltaIn = getTime();
+	// merge_Insertion_Sort(mylist, 0, n - 1);
+	deltaOut = getTime();
+	printSortStatus(mylist.size(), "std::list", static_cast<float>(deltaOut - deltaIn));
+	if (DEBUG)
+		myPrintTemplate(mylist);
 	return (0);
 }

@@ -18,7 +18,7 @@
 #include <memory>
 #include <cstring>
 
-#include <regex>
+// #include <regex>
 
 # define DEBUG 0
 
@@ -48,10 +48,10 @@ class BitcoinExchange
 		std::map<std::string, float>	getDataMap() const { return _data; };
 		bool							getBaseStatus() const { return _baseStatus; };
 
-		int		Regex_Check_Data_Value(const std::string& value);
-		int		Regex_Check_Date(const std::string& date);
+		// int		Regex_Check_Data_Value(const std::string& value);
+		// int		Regex_Check_Date(const std::string& date);
 		float	Stream_Change_String_To_Float(const std::string& str);
-		float	Stof_Change_String_To_Float(const std::string& line);
+		// float	Stof_Change_String_To_Float(const std::string& line);
 
 
 };
@@ -69,8 +69,8 @@ class UnvailableFloatValue : public std::exception {
 			return msg_;
 		}
 
-		~UnvailableFloatValue() {
-			delete[] msg_;
+		~UnvailableFloatValue() throw() {
+			delete [] msg_;
 		}
 
 	private:
