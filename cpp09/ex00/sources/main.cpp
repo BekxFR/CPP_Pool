@@ -29,7 +29,7 @@
 	// if negative number 
 	// 	std::cout << "Error: not a positive number." << std::endl;
 	// if unavailable > 1000
-	// 	std::cout << "Error: too large a number." << std::endl;
+	// 	std::cout << "Error: too large number." << std::endl;
 	// if date unavailable
 	// 	std::cout << "Error: bad input => " << map[date] << std::endl;
 

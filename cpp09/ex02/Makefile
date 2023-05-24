@@ -6,7 +6,7 @@
 #    By: chillion <chillion@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/01 12:07:22 by chillion          #+#    #+#              #
-#    Updated: 2023/05/22 18:00:44 by chillion         ###   ########.fr        #
+#    Updated: 2023/05/24 18:58:47 by chillion         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,8 +58,11 @@ ${SOFT_NAME} : ${OBJ}
 
 -include ${DEPS}
 
+vtest : all
+	$(VAL) ./${SOFT_NAME} `shuf -i 1-100000 -n 3000 | tr "\n" " "`
+
 test : all
-	$(VAL) ./${SOFT_NAME}
+	./${SOFT_NAME} `shuf -i 1-100000 -n 3000 | tr "\n" " "` > z3
 
 clean : 
 	@echo "${RED}###${NC}Nettoyage des fichiers .o${RED}###"

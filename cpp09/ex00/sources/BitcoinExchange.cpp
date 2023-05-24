@@ -130,7 +130,7 @@ int BitcoinExchange::Check_Final_Data_Value(const float& value)
 	}
 	if (static_cast<long int>(value) > 1000)
 	{
-		std::cout << "Error: too large a number." << std::endl;
+		std::cout << "Error: too large number." << std::endl;
 		return (1);
 		
 	}

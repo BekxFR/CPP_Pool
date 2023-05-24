@@ -6,7 +6,7 @@
 #    By: chillion <chillion@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/01 12:07:22 by chillion          #+#    #+#              #
-#    Updated: 2023/05/16 15:44:24 by chillion         ###   ########.fr        #
+#    Updated: 2023/05/24 15:38:37 by chillion         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,8 @@ ${SOFT_NAME} : ${OBJ}
 -include ${DEPS}
 
 test : all
-	$(VAL) ./${SOFT_NAME} "8 9 * 9 - 9 - 9 - 4 - 1 + 8 + 9 9 - + 2 2 / * 2 / "
+	$(VAL) ./${SOFT_NAME} "1 1 +"
+# $(VAL) ./${SOFT_NAME} "8 9 * 9 - 9 - 9 - 4 - 1 + 8 + 9 9 - + 2 2 / * 2 / "
 
 clean : 
 	@echo "${RED}###${NC}Nettoyage des fichiers .o${RED}###"

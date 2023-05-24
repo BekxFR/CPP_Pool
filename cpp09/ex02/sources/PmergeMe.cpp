@@ -36,9 +36,6 @@ int *PmergeMe::checkArgsValues(char **argv, int argc, int *tab)
 			tab[i - 1] = std::atoll(argv[i]);
 		}
 	}
-	for (int i = 1; i < argc; i++) {
-		std::cout << "tab[" << i - 1 << "] = " << tab[i - 1] << std::endl;
-	}
 	return (0);
 }
 
