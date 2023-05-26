@@ -1,4 +1,0 @@
-Before:	58155 50975 52332 67167 87468 68281 2152 22509 13512 79526 [...]
-After:	6 48 51 80 84 101 107 135 169 170 [...]
-Time to process a range of 3000 elements with std::vector : 1029 us
-Time to process a range of 3000 elements with std::list : 37636 us

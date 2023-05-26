@@ -1,9 +1,9 @@
 
 #include "BitcoinExchange.hpp"
 
-BitcoinExchange::BitcoinExchange() : _data(), _baseStatus(Database_File_Parser("../cpp_09/data.csv"))
+BitcoinExchange::BitcoinExchange() : _data(), _baseStatus(Database_File_Parser("./data.csv"))
 {
-	if (DEBUG == 1)
+	if (DEBUG)
 		std::cout << "BitcoinExchange Default Constructor called" << std::endl;
 }
 
@@ -14,7 +14,7 @@ BitcoinExchange::BitcoinExchange(BitcoinExchange const &obj)
 
 BitcoinExchange::~BitcoinExchange()
 {
-	if (DEBUG == 1)
+	if (DEBUG)
 		std::cout << "BitcoinExchange Destructor called" << std::endl;
 }
 
@@ -24,7 +24,7 @@ BitcoinExchange &BitcoinExchange::operator=(BitcoinExchange const &obj)
 		this->_data = obj.getDataMap();
 		this->_baseStatus = obj.getBaseStatus();
 	}
-	if (DEBUG == 1)
+	if (DEBUG)
 		std::cout << "BitcoinExchange Copy assignment operator called" << std::endl;
 	return *this;
 }
@@ -125,12 +125,12 @@ int BitcoinExchange::Check_Final_Data_Value(const float& value)
 {
 	if (static_cast<long int>(value) < 0)
 	{
-		std::cout << "Error: not a positive number." << std::endl;
+		std::cout << "Error: Not a positive number." << std::endl;
 		return (1);
 	}
 	if (static_cast<long int>(value) > 1000)
 	{
-		std::cout << "Error: too large number." << std::endl;
+		std::cout << "Error: Too large number." << std::endl;
 		return (1);
 		
 	}
@@ -227,8 +227,9 @@ bool	BitcoinExchange::Database_File_Parser(const std::string& filename)
 {
 	std::ifstream file(filename.c_str());
 	if (!file.is_open()) {
-		std::cout << "Error: could not open file." << std::endl;
-		return (true);
+		std::cout << "Error: Could not open file." << std::endl;
+		std::cout << "The CSV file should be located in the same directory as the program." << std::endl;
+		return (false);
 	}
 	std::string	line;
 	std::getline(file, line);
@@ -255,7 +256,7 @@ int	BitcoinExchange::Pre_Search_File_Parser(const std::string& filename)
 {
 	std::ifstream file(filename.c_str());
 	if (!file.is_open()) {
-		std::cout << "Error: could not open file." << std::endl;
+		std::cout << "Error: Could not open file." << std::endl;
 		return (1);
 	}
 	std::string			line;
@@ -313,7 +314,7 @@ void	BitcoinExchange::Search_File_Parser(const std::string& filename)
 {
 	std::ifstream file(filename.c_str());
 	if (!file.is_open()) {
-		std::cout << "Error: could not open file." << std::endl;
+		std::cout << "Error: Could not open file." << std::endl;
 		return ;
 	}
 	std::string			line;
@@ -336,7 +337,7 @@ void	BitcoinExchange::Search_File_Parser(const std::string& filename)
 				tmp = word;
 				if (Check_Date(word) == 1)
 				{
-					std::cout << "Error: bad input => " << word << std::endl;
+					std::cout << "Error: Bad input => " << word << std::endl;
 					break ;
 				}
 			}

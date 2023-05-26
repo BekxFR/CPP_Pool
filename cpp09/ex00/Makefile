@@ -6,7 +6,7 @@
 #    By: chillion <chillion@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/01 12:07:22 by chillion          #+#    #+#              #
-#    Updated: 2023/05/22 18:31:53 by chillion         ###   ########.fr        #
+#    Updated: 2023/05/25 15:35:53 by chillion         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@
 CXX := c++
 CXXFLAGS := -std=c++98 -Wall -Wextra -Werror -MMD -MP -Isources/
 # CXXFLAGS += -fsanitize=address
-CXXFLAGS += -g3
+# CXXFLAGS += -g3
 SRC_DIR := sources/
 OBJ_DIR := objects/
 RM := rm
@@ -31,7 +31,8 @@ MAGENTA = \033[0;35m
 CYAN = \033[0;36m
 NC = \033[0m
 
-SRCS =	main.cpp	BitcoinExchange.cpp	\
+SRCS =	main.cpp	\
+		BitcoinExchange.cpp	\
 
 SOFT_NAME := btc
 OBJS = $(SRCS:%.cpp=%.o)

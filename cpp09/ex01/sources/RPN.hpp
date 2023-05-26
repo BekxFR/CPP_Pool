@@ -11,8 +11,8 @@ class RPN
 {
 	private:
 		std::stack<long int>			_stack;
-		std::string				_arg;
-		bool					_argStatus;
+		std::string						_arg;
+		bool							_argStatus;
 		RPN();
 
 	public:
@@ -25,8 +25,8 @@ class RPN
 		bool	Parse_Reverse_Polish_Notation();
 
 		std::stack<long int>	getStack() const { return _stack; };
-		std::string		getArg() const { return _arg; };
-		bool			getArgStatus() const { return _argStatus; };
+		std::string				getArg() const { return _arg; };
+		bool					getArgStatus() const { return _argStatus; };
 };
 
 #endif

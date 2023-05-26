@@ -13,6 +13,8 @@
 
 #define DEBUG 0
 
+const int TAILLE_SEUIL = 10;
+
 class PmergeMe
 {
 	private:
@@ -28,11 +30,18 @@ class PmergeMe
 
 		void	ParseData(char **argv, int argc, int *tab);
 		int		*checkArgsValues(char **argv, int argc, int *tab);
-
-
+		void	Routine_For_Vector_List_Tri(int argc, char **argv);
 };
 
-int onlyPositiveArgv(char *arg);
+int			onlyDigitArgv(char *arg);
+void		rangeList(std::list<int>::iterator start, std::list<int>::iterator end);
+void		printSortStatus(size_t size, std::string type, float time);
+long long	getTimeInMicroseconds();
+time_t		getTime();
+double		getTimeElapsedInMicroseconds(struct timeval startTime, struct timeval endTime);
+
+void	merge_Insertion_Sort_List(std::list<int>& arr, int debut, int fin);
+void	merge_Insertion_Sort(std::vector<int>& arr, int debut, int fin);
 
 class NoPositiveInteger : public std::exception {
 	public: 
@@ -52,5 +61,14 @@ class NoPositiveInteger : public std::exception {
 	private:
 		char* msg_;
 };
+
+template <typename T>
+void myPrintTemplate(const T& arr);
+
+template <typename T>
+void myOneLinePrintTemplate(const T& arr, const std::string& text);
+
+template <typename T>
+void myItPrintTemplate(T b, T e);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: chillion <chillion@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/01 12:07:22 by chillion          #+#    #+#              #
-#    Updated: 2023/05/24 18:58:47 by chillion         ###   ########.fr        #
+#    Updated: 2023/05/25 15:35:42 by chillion         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@
 CXX := c++
 CXXFLAGS := -std=c++98 -Wall -Wextra -Werror -MMD -MP -Isources/
 # CXXFLAGS += -fsanitize=address
-CXXFLAGS += -g3
+# CXXFLAGS += -g3
 SRC_DIR := sources/
 OBJ_DIR := objects/
 RM := rm
@@ -31,7 +31,8 @@ MAGENTA = \033[0;35m
 CYAN = \033[0;36m
 NC = \033[0m
 
-SRCS =	main.cpp	PmergeMe.cpp	\
+SRCS =	main.cpp	\
+		PmergeMe.cpp	\
 
 SOFT_NAME := PmergeMe
 OBJS = $(SRCS:%.cpp=%.o)
@@ -62,7 +63,7 @@ vtest : all
 	$(VAL) ./${SOFT_NAME} `shuf -i 1-100000 -n 3000 | tr "\n" " "`
 
 test : all
-	./${SOFT_NAME} `shuf -i 1-100000 -n 3000 | tr "\n" " "` > z3
+	./${SOFT_NAME} `shuf -i 1-100000 -n 3000 | tr "\n" " "`
 
 clean : 
 	@echo "${RED}###${NC}Nettoyage des fichiers .o${RED}###"
